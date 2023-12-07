@@ -20,7 +20,6 @@ public class Player {
         return this.energyLevel;
     }
 
-
     public void checkInventory(){
         this.inventory.checkInventory(this);
     }
@@ -33,7 +32,6 @@ public class Player {
         this.inventory.remove(o);
     }
 
-
     public void eat(Snack s){
         if (this.getEnergyLevel() + s.getEnergyBonus() >= this.maxEnergy){
             throw new RuntimeException("You are full!");
@@ -44,12 +42,5 @@ public class Player {
         }
     }
 
-    public void check_balance(){
-        if(this.balance > 0.0){
-            System.out.println(this.name + "s wallet has " + this.balance + " coins");
-        } else {
-            System.out.println("A single speck of dust tumbles out of your wallet... you find not a single coin inside.");
-        }
-    }
 }
 

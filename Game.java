@@ -4,7 +4,7 @@ public static void main(String[] args) {
     Dani.checkInventory();
     Dani.check_balance();
 
-    Tool Cup = new Tool("cup", 2.0,2);
+    Tool Cup = new Tool("Cup", 2.0,2);
     Dani.take(Cup);
     Dani.checkInventory();
 
@@ -12,11 +12,14 @@ public static void main(String[] args) {
     Dani.take(Donut);
     Dani.checkInventory();
 
-    Spider spider = new Spider(12, "Spider");
-    System.out.println(spider.wrangle("Cup"));
+    Spider spider = new Spider(12);
+    System.out.println(spider.wrangle(Cup));
 
     Location [][] map = new Location[5][5];
-    System.out.println(map);
+
+    Dani.move("west");
+    Dani.getCoords();
+ 
 }   
     
 }
