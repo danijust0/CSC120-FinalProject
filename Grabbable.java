@@ -6,7 +6,7 @@ abstract class Grabbable {
         this.name = name;
         this.price = price;
     }
-
+    
 // Contract
     abstract void examine();
 }

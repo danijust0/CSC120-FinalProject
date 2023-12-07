@@ -1,11 +1,18 @@
-import java.util.Random;
+abstract class Bug{
 
-public class Bug{
+    private int difficulty;
+    String name;
 
-    int difficulty;
 
-    public Bug(int difficulty, boolean can_fly, boolean can_swim){
+    public Bug(int difficulty, String name){
         this.difficulty = difficulty;
+        this.name = name;
     }
 
+    public int getDifficulty(){
+        return this.difficulty;
+    }
+
+
+    abstract boolean wrangle();
 }
