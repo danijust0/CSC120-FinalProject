@@ -3,14 +3,19 @@ public class Spider extends Bug {
 
     int difficulty;
 
-    public Spider(int difficulty, String name){
-        super(difficulty, name);
+    public Spider(int difficulty){
+        super(difficulty);
+        this.name = "spider";
+    }
+
+    public String toString(){
+        return this.name;
     }
 
 // If you use the right tool, you can catch the bug. If not, 50/50 chance.
-    public boolean wrangle(String tool){
+    public boolean wrangle(Tool tool){
         System.out.println("Wrangling " + this.name + " using " + tool + "...");
-        if (tool.equals("Cup")){
+        if (tool.toString().equals("Cup")){
             return true; 
         } else {
         Random random = new Random();
