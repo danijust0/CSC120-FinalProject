@@ -23,11 +23,5 @@ public class Player {
             System.out.println("A single crumb tumbles out of your wallet... you find not a single button inside.");
         }
     }
-
-    public static void main(String[] args) {
-
-        Player Dani = new Player("dani");
-        Dani.check_balance();
-        }
 }
 

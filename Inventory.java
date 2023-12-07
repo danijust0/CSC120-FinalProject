@@ -18,15 +18,6 @@ public class Inventory {
             }
         }
     }
-    
-// COME BACK HERE WHEN NPC CLASS IS BUILT
-    public void check_inventory(String NPC){
-            System.out.println(NPC+ "'s inventory...");
-            for(Grabbable o : inventory){
-                System.out.println(o);
-            }
-        }
-    }
 
     public void add(Grabbable o) {
         if (this.inventory.size() >= this.maxCapacity) {

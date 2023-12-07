@@ -1,5 +1,3 @@
-import org.w3c.dom.NameList;
-
 abstract class Grabbable {
     String name;
     double price;
@@ -9,11 +7,6 @@ abstract class Grabbable {
         this.price = price;
     }
 
-    public String toString() {
-        return this.getClass().getCanonicalName() + " at (" + this.x + "," + this.y + ")";
-    }
-
 // Contract
-    abstract void take();
     abstract void examine();
 }
