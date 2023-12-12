@@ -1,25 +1,21 @@
 public class Game {
 public static void main(String[] args) {
-    Player Dani = new Player("dani");
-    Dani.checkInventory();
-    Dani.check_balance();
 
-    Tool Cup = new Tool("Cup", 2.0,2);
-    Dani.take(Cup);
-    Dani.checkInventory();
 
-    Snack Donut = new Snack("donut", 2.0, 2);
-    Dani.take(Donut);
-    Dani.checkInventory();
-
-    Spider spider = new Spider(12);
-    System.out.println(spider.wrangle(Cup));
-
-    Location [][] map = new Location[5][5];
-
-    Dani.move("west");
-    Dani.getCoords();
- 
-}   
-    
+//Main Game Loop
+String action = " ";
+while (!action.equals("go home")){
+    action = sc.nextLine();
+    switch(action){
+        case "go north":
+            player.move("north");
+        case "go south":
+                player.move("south");
+        case "go east":
+            player.move("east");
+        case "go west":
+                player.move("west");
+}
+}
+}
 }
