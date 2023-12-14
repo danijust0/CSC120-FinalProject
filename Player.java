@@ -6,8 +6,8 @@ public class Player {
     private int energyLevel;
     private int maxEnergy;
     private double balance;
-    private int x;
-    private int y;
+    int x;
+    int y;
 
     Inventory inventory;
    

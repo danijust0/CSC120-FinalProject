@@ -1,11 +1,11 @@
 import java.util.Random;
-public class Spider extends Bug {
+public class Beetle extends Bug {
 
     int difficulty;
 
-    public Spider(int difficulty){
+    public Beetle(int difficulty){
         super(difficulty);
-        this.name = "spider";
+        this.name = "beetle";
     }
 
     public String toString(){
@@ -15,7 +15,7 @@ public class Spider extends Bug {
 // If you use the right tool, you can catch the bug. If not, 50/50 chance.
     public boolean wrangle(Tool tool){
         System.out.println("Wrangling " + this.name + " using " + tool + "...");
-        if (tool.name.equals("ordinary cup")){
+        if (tool.toString().equals("ordinary cup")){
             return true; 
         } else {
         Random random = new Random();
