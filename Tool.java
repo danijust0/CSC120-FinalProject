@@ -7,12 +7,4 @@ public class Tool extends Grabbable{
         bonus = this.bonus;
     }
 
-    public void examine(){
-        System.out.println("This is a" + this.name);
-    }
-
-    public String toString(){
-        return this.name;
-    }
-
 }

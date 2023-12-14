@@ -87,6 +87,5 @@ public class Player {
             throw new RuntimeException("Invalid direction");
         }
     }
-
 }
 
