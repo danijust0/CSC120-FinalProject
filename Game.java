@@ -150,12 +150,6 @@ while (!action.equals("go home")){
                 } catch (Exception e) {
                     System.out.println("Unsuccessful Wrangle");
                 }
-                //  if (map[player.x][player.y].bugs.isEmpty()){
-                //     System.out.println("There are no bugs to wrangle...");
-                //  } else{
-                //     System.out.println("Which bug?");
-
-                // }
                 break;
                 
            
