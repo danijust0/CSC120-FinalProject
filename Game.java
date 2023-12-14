@@ -53,7 +53,6 @@ System.out.println("You're all ready to go. Happy bug hunting! Type a command to
 // Make Map
 Location [][] map = new Location[5][5];
 
-Random random = new Random();
 for (int row = 0; row < 5; row++){
     for (int col = 0; col < 5; col++){
         map[row][col] = new Location();
@@ -130,7 +129,6 @@ while (!action.equals("go home")){
             break;
         
         case "look around":
-            System.out.println(map[player.x][player.y].bugs);
             map[player.x][player.y].getSurroundings();
             // FOR DEBUGGING 
             // System.out.println(action + " successful look around");
