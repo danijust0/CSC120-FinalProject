@@ -8,10 +8,6 @@ public class Butterfly extends Bug {
         this.name = "butterfly";
     }
 
-    public String toString(){
-        return this.name;
-    }
-
 // If you use the right tool, you can catch the bug. If not, 50/50 chance.
     public boolean wrangle(Tool tool){
         System.out.println("Wrangling " + this.name + " using " + tool + "...");

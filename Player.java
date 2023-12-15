@@ -17,15 +17,10 @@ public class Player {
         this.name = name.toUpperCase();
         this.energyLevel = 100;
         this.maxEnergy = 100;
-        this.balance = 0.0;
         this.bugCase = new ArrayList<>();
         this.inventory = new Inventory();
         this.x = 0;
         this.y = 0;
-    }
-
-    public int getEnergyLevel(){
-        return this.energyLevel;
     }
 
     public void checkInventory(){

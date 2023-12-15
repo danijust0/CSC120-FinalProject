@@ -10,9 +10,4 @@ public class Tool extends Grabbable{
     public void examine(){
         System.out.println("This is a" + this.name);
     }
-
-    public String toString(){
-        return this.name;
-    }
-
 }

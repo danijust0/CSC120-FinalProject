@@ -7,17 +7,12 @@ public class Snack extends Grabbable {
         this.energy_bonus = energy_bonus;
     }
 
-
     public int getEnergyBonus(){
         return energy_bonus;
     }
 
     public void examine(){
         System.out.println("This is a" + this.name);
-    }
-
-    public String toString(){
-        return this.name;
     }
 
 }

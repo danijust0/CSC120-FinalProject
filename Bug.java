@@ -4,13 +4,10 @@ abstract class Bug{
     String name;
 
 
-    public Bug(int difficulty){
-        this.difficulty = difficulty;
     }
 
     public int getDifficulty(){
         return this.difficulty;
     }
 
-    abstract boolean wrangle(Tool tool);
 }
