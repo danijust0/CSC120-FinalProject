@@ -1,4 +1,5 @@
 import java.lang.RuntimeException;
+import java.util.ArrayList;
 
 public class Player {
     
@@ -10,12 +11,14 @@ public class Player {
     int y;
 
     Inventory inventory;
+    ArrayList<Bug> bugCase;
    
     public Player(String name){
         this.name = name.toUpperCase();
         this.energyLevel = 100;
         this.maxEnergy = 100;
         this.balance = 0.0;
+        this.bugCase = new ArrayList<>();
         this.inventory = new Inventory();
         this.x = 0;
         this.y = 0;
@@ -24,28 +27,23 @@ public class Player {
     public int getEnergyLevel(){
         return this.energyLevel;
     }
-    public void getCoords(){
-        System.out.println(this.x + "," + this.y);
-    }
 
     public void checkInventory(){
         this.inventory.checkInventory(this);
     }
 
-    public void check_balance(){
-        if(this.balance > 0.0){
-            System.out.println(this.name + "s wallet has " + this.balance + " coins");
+    public void checkBugs(){
+        if(this.bugCase.isEmpty()){
+            throw new RuntimeException("No bugs here...");
         } else {
-            System.out.println("A single speck of dust tumbles out of your wallet... you find not a single coin inside.");
+            System.out.println("You open your bug case...");
+            System.out.println("------------------------------------");
+            System.out.println("BUGS");
+            for(int bug = 0; bug < bugCase.size(); bug++){ 
+                System.out.println("- " + bugCase.get(bug));
+            }
+            System.out.println("------------------------------------");
         }
-    }
-
-    public void take(Grabbable o) {
-        this.inventory.add(o);
-    }
-
-    public void drop(Grabbable o){
-        this.inventory.remove(o);
     }
 
     public void eat(Snack s){
@@ -66,13 +64,13 @@ public class Player {
                 this.y --;
             }
         } else if (direction.toLowerCase().equals("south")){
-            if(this.y + 1 > 5){
+            if(this.y + 1 > 4){
                 throw new RuntimeException("This way leads to unavigatable woods. Don't go any further.");
             } else {
                 this.y ++;
             }
         } else if (direction.toLowerCase().equals("east")){
-            if(this.x + 1 > 5){
+            if(this.x + 1 > 4){
                 throw new RuntimeException("This way leads to unavigatable woods. Don't go any further.");
             } else {
                 this.x ++;
