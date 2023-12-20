@@ -14,5 +14,4 @@ public class Snack extends Grabbable {
     public void examine(){
         System.out.println("This is a" + this.name);
     }
-
 }

@@ -8,7 +8,6 @@ public static void main(String[] args) {
 // Initiate Scanner     
 Scanner sc = new Scanner(System.in);
 
-
 // Title
 System.out.println("------------------------------------");
 System.out.println("BUG HUNT");
@@ -21,67 +20,50 @@ Player player = new Player(name);
 System.out.println(player.name + ", huh? Interesting name. Fitting for an adventurous bug hunter such as yourself.");
 
 System.out.println("------------------------------------");
-System.out.println(" BEGINNER TOOLS");
+System.out.println("PICK YOUR STARTER TOOL");
 System.out.println("------------------------------------");
-
-Tool ordinaryCup = new Tool("ordinary cup", 10, 5);
-Tool ordinaryNet = new Tool("ordinary net", 15, 5);
-System.out.println(ordinaryCup.name);
-System.out.println(ordinaryNet.name);
+System.out.println(Cup.name);
+System.out.println(Net.name);
 System.out.println("------------------------------------");
 System.out.println("Pick your first bug hunting tool. This is an important choice. Some tools make it easier to catch certain bugs.");
 String tool = sc.nextLine().toLowerCase();
 
 switch(tool){
-    case "ordinary cup":
-        player.inventory.add(ordinaryCup);
-        System.out.println("Added " + ordinaryCup.name + " to "+ player.name + "'s inventory.");
+    case "cup":
+        player.inventory.add(Cup);
+        System.out.println("Added " + Cup.name + " to "+ player.name + "'s inventory.");
         break;
-    case "ordinary net":
-        player.inventory.add(ordinaryNet);
-        System.out.println("Added " + ordinaryNet.name + " to " + player.name + "'s inventory");
+    case "net":
+        player.inventory.add(Net);
+        System.out.println("Added " + Net.name + " to " + player.name + "'s inventory");
         break;
     default:
         System.out.println("I don't understand " + tool + ", so I'll choose for you.");
-        player.inventory.add(ordinaryCup);
-        System.out.println("Added " + ordinaryCup.name + " to " + player.name + "'s inventory");
+        player.inventory.add(Cup);
+        System.out.println("Added " + Cup.name + " to " + player.name + "'s inventory");
         break;
 }
 
-System.out.println("You're all ready to go. Happy bug hunting! Type a command to begin your journey..");
+System.out.println("You're all ready to go. Happy bug hunting! Type a command to begin your journey, type HELP for controls...");
 
-// Make Map
+/**
+ * Make 5x5 Map
+ */
 Location [][] map = new Location[5][5];
 
 for (int row = 0; row < 5; row++){
     for (int col = 0; col < 5; col++){
         map[row][col] = new Location();
-        int nBugs = random.nextInt(2);
-        for (int n = 0; n < nBugs ; n++){
-            int randInt2 = random.nextInt(3);
-            switch (randInt2){
-                case 0:
-                    map[row][col].bugs.add(new Spider(20));
-                    break;
-                case 1:
-                    map[row][col].bugs.add(new Ladybug(2));
-                    break;
-                case 2:
-                    map[row][col].bugs.add(new Beetle(15));
-                    break;
-                case 3:
-                    map[row][col].bugs.add(new Butterfly(18));
-                    break;
-                }
-        System.out.println(map[row][col].bugs);
-            }
+        map[row][col].generateItems();
         }
       }
 
-//Main Game Loop
+/**
+ * Main Game Loop
+ */
 String action = " ";
 while (!action.equals("go home")){
-    action = sc.nextLine();
+    action = sc.nextLine().toLowerCase();
     switch(action){
 
         case "move north":
@@ -91,8 +73,6 @@ while (!action.equals("go home")){
             } catch (Exception e){
                 System.out.println("This way leads to unnavigatable woods. Let's go somewhere else....");
             }
-            // FOR DEBUGGING 
-            // System.out.println(action + " successful go north" );
             break;
 
         case "move south":   
@@ -102,8 +82,6 @@ while (!action.equals("go home")){
                 } catch (Exception e){
                     System.out.println("This way leads to unnavigatable woods. Let's go somewhere else....");
                 }
-            // FOR DEBUGGING 
-            // System.out.println(action + " successful go south");
             break;
 
         case "move east":
@@ -113,8 +91,6 @@ while (!action.equals("go home")){
                 } catch (Exception e){
                     System.out.println("This way leads to unnavigatable woods. Let's go somewhere else....");
                 }
-            // FOR DEBUGGING 
-            // System.out.println(action + " successful go east");
             break;
 
         case "move west":
@@ -124,33 +100,76 @@ while (!action.equals("go home")){
                 } catch (Exception e){
                     System.out.println("This way leads to unnavigatable woods. Let's go somewhere else....");
                  }
-            // FOR DEBUGGING 
-            // System.out.println(action + " successful go west");
             break;
         
         case "look around":
             map[player.x][player.y].getSurroundings();
-            // FOR DEBUGGING 
-            // System.out.println(action + " successful look around");
             break;
         
         case "check inventory":
         case "open inventory":
         case "inventory":
-                 player.checkInventory();
-                 break;
+                    player.checkInventory();
+                break;
         
-        case "catch bug":
-        case "wrangle bug":
-                 try {
-                    map[player.x][player.y].seekAndDestroy(ordinaryCup);
-                    System.out.println("Wrangled");
-                } catch (Exception e) {
-                    System.out.println("Unsuccessful Wrangle");
+        case "catch":
+        case "wrangle":
+                System.out.println("Using what?");
+                String chosenTool = sc.nextLine();
+
+                if (chosenTool.equals("cup")){
+                    if (player.inventory.has(Cup)){
+                        try {
+                            map[player.x][player.y].seekAndDestroy(player, Cup);
+                        } catch (Exception e) {
+                            System.out.println("Bug Not Found");
+                            } 
+                    } else {
+                        System.out.println("You don't have that tool.");
+                    }
+                } else if (chosenTool.equals("net")){
+                    if (player.inventory.has(Net)){
+                    try {
+                        map[player.x][player.y].seekAndDestroy(player, Net);
+                    } catch (Exception e) {
+                        System.out.println("You Failed...");
+                    }
+                } else {
+                    System.out.println("You don't have that tool.");
+                }
                 }
                 break;
-                
-           
+
+        case "take item":
+        case "take":
+                System.out.println("Take what? Use number to indicate.");
+                System.out.println("------------------------------------");
+                System.out.println("THINGS");
+                for (int thing=0; thing < map[player.x][player.y].things.size(); thing++){
+                    System.out.println(map[player.x][player.y].things.get(thing).name);
+                }
+                System.out.println("------------------------------------");
+                try{
+                    int chosenItem = sc.nextInt();
+                    map[player.x][player.y].take(player, chosenItem-1);
+                } catch (Exception e) {
+                    System.out.println("No such item exists here...");
+                }
+            break;
+
+        case "drop item":
+        case "drop":
+                player.checkInventory();
+                System.out.println("Drop which item? Indicate using number...");
+                try{
+                    int chosenItem2 = sc.nextInt();
+                    map[player.x][player.y].drop(player, chosenItem2-1);
+                } catch (Exception e){
+                System.out.println("This item cannot be dropped");
+                }
+                break;
+
+
         default: 
                 System.out.println("I don't understand " + action);
 }

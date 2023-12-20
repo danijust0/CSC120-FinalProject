@@ -31,7 +31,6 @@ public class Player {
         if(this.bugCase.isEmpty()){
             throw new RuntimeException("No bugs here...");
         } else {
-            System.out.println("You open your bug case...");
             System.out.println("------------------------------------");
             System.out.println("BUGS");
             for(int bug = 0; bug < bugCase.size(); bug++){ 
@@ -49,7 +48,6 @@ public class Player {
             this.energyLevel += s.getEnergyBonus();
             this.inventory.remove(s);
         }
-    }
 
     public void move(String direction){
         if (direction.toLowerCase().equals("north")){
